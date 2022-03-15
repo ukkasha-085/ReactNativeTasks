@@ -1,0 +1,261 @@
+*****************************************************************************************************
+                                              ###########
+                                               HTML CODE
+                                              ###########
+*****************************************************************************************************
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TODO App</title>
+    <link rel="stylesheet" type="text/css" href="./LabAssi1Styles.css" />
+</head>
+
+<body>
+    <div class="container center">
+        <h1 class="center title">My TODO App</h1>
+        <div class="flow-right controls">
+            <span>Item count: <span id="item-count">0</span></span>
+            <span>Unchecked count: <span id="unchecked-count">0</span></span>
+        </div>
+        <button class="button center" id="addingbtn" onClick="newTodo()">New TODO</button>
+        <button class="button center" id="removebtn" onClick="removeTodo()">Remove TODO</button>
+        <ul id="todo-list" class="todo-list"></ul>
+    </div>
+    <script src="./LabAssi1.js"></script>
+</body>
+
+</html>
+
+*****************************************************************************************************
+                                              ###########
+                                              SCRIPT CODE
+                                              ###########
+*****************************************************************************************************
+
+
+const classNames = {
+  TODO_ITEM: "todo-container",
+  TODO_CHECKBOX: "todo-checkbox",
+  TODO_TEXT: "todo-text",
+  TODO_DELETE: "todo-delete",
+};
+
+const ulist = document.getElementById("todo-list");
+const itemCountSpan = document.getElementById("item-count");
+const uncheckedCountSpan = document.getElementById("unchecked-count");
+// const cb =  document.querySelectorAll('check_box');
+// const RemoveTodo = document.getElementById("removebtn");
+
+
+
+
+function newTodo() {
+  var itemAdded = document.querySelectorAll('.ToDoitem');
+
+  /*Add Logic for creating a new Todo Item. */
+  var crtLi = document.createElement('li');
+  crtLi.className = 'ToDoitem';
+
+  var divTodo = document.createElement('div');
+  divTodo.className = "div-addTodo";
+
+  ulist.parentNode.appendChild(divTodo);
+  var TextBox = document.createElement("INPUT");
+  TextBox.setAttribute("type", "text");
+
+
+// Adding checkbox to temporary div
+  divTodo.appendChild(TextBox);
+  var btn = document.createElement("button");
+  btn.innerHTML = "Submmit Todo";
+  divTodo.appendChild(btn);
+
+  // Submiting Todo in Div
+  btn.onclick = () => {
+    console.log(TextBox.value);
+    
+    crtLi.appendChild(document.createTextNode(TextBox.value));
+    divTodo.parentNode.removeChild(divTodo);
+  }
+  // Creating check box
+  var chkbx = document.createElement("INPUT");
+  chkbx.className="check_box";
+  chkbx.setAttribute("type", "checkbox");
+  crtLi.appendChild(chkbx);
+
+  // Adding everything of an item in a list!
+  ulist.appendChild(crtLi);
+
+  let arr = Array.from(itemAdded);
+  itemCountSpan.innerHTML = arr.length + 1;
+  uncheckedCountSpan.innerHTML = getCheckedCount();
+
+}
+
+// ##################*********** Remove Function **************#############
+let count = 1;
+function removeTodo() {
+  if( count % 2 != 0)
+   {   count=2;
+      /*Add Logic for removing an existing TODO Item */
+        var itemCount = document.querySelectorAll('.ToDoitem');
+        var array = Array.from(itemCount);
+
+        array.forEach(element => {
+          var closebtn = document.createElement('button');
+          closebtn.className = "remove_item";
+          closebtn.textContent = "X";
+          element.appendChild(closebtn);
+        });
+
+
+        var btnCount = document.querySelectorAll('.remove_item');
+        var arr = Array.from(btnCount);
+
+// assiging function to each close button for deletion
+        arr.forEach((item) => {
+          
+          item.onclick = function (x) {
+            var li = x.target.parentNode;
+            ulist.removeChild(li);
+            console.log("Delete Button Pressed");
+           getCheckedCount();
+
+            cal_cont();
+          };
+
+        });
+
+        // list.innerHTML = " ";
+        // itemCountSpan.innerHTML = "";
+      
+      function cal_cont(){
+        var countitm = document.querySelectorAll('.ToDoitem');
+        var Arr = Array.from(countitm);
+        itemCountSpan.innerHTML = Arr.length;
+
+      }
+    }
+    else if(count % 2 == 0){
+      console.log("entered in else ");
+      var Clist = document.querySelectorAll('.ToDoitem');
+      var ArrClist = Array.from(Clist);
+      ArrClist.map((item)=>{
+         var li = document.querySelector('.remove_item');
+         item.removeChild(li);
+      });
+      console.log("outered in else ");
+
+      count=1;
+    }
+}
+
+function getCheckedCount(){
+  let cnt = 0;
+const all_check_chkBox = document.querySelectorAll('.check_box');
+  let arr = Array.from(all_check_chkBox);
+
+  arr.forEach((item)=>{
+    // if()
+    console.log(item.value,"\n");
+
+  //   if(item.prop("checked", false)){
+  //   cnt+=1;
+  // }
+})
+  // // cnt = arr.length - uncheck.length;
+  // uncheckedCountSpan.innerHTML = cnt;
+}
+
+*****************************************************************************************************
+                                              ###########
+                                              SCRIPT CODE
+                                              ###########
+*****************************************************************************************************
+
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  /* list-style-type: none; */
+}
+/* .ToDoitem{
+} */
+.remove_item {
+  margin-left: 10px;
+}
+.check_box {
+  margin-left: 5px;
+  margin-right: 8px;
+}
+
+.center {
+  align-self: center;
+}
+
+.flow-right {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 100vh;
+}
+
+.title,
+.controls,
+.button {
+  flex: none;
+}
+
+.button {
+  padding: 10px 20px;
+}
+
+.todo-list {
+  flex: 1 1 0;
+  margin-top: 20px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.todo-delete {
+  margin: 10px;
+}
+
+.todo-checkbox {
+  margin: 10px;
+}
+
+.todo-container {
+  padding: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.todo-container:first-of-type {
+  border-top: 1px solid #333;
+}
+
+
+
+
