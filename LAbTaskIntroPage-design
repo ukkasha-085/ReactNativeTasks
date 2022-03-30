@@ -1,0 +1,71 @@
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
+
+export default function App() {
+  return (
+    <>
+    <View style={[styles.container, {flex:2.5, backgroundColor:"#FFFFE0"}]}>
+      <Text>Hwllo</Text>
+        <Image  style = {styles.imagestyle} source={require('./assets/Saly-1intro-image.png')} />
+    </View>
+
+    <View style={[styles.container, { backgroundColor:"#FFFFE0"}]}>
+      <Text style={[ styles.textstyle, {backgroundColor:'#FFFFE0',fontSize: 20, fontWeight: "bold"}]} >
+        Discover Your Own Dream house</Text>
+
+      <Text style={[ styles.textstyle, {backgroundColor:'#FFFFE0'}]} >
+        The cross axis is the axis perpendicular to the main axis, or the axis which the wrapping lines are laid out in.
+        </Text>
+    </View>
+
+    <View style={[{backgroundColor:"#FFFFE0", flexDirection:"row", height:"10%",    alignItems: 'centre',justifyContent:"center",  borderColor:"black"}]}>
+      {/* <View style={{backgroundColor:"#FFFFE0", flexDirection:"row", height:"80%"}}width:"20%",  > */}
+        
+        <Button style={[styles.ButtonDesign , { borderBottomLeftRadius:35 } ]}  title="Sign in" color="#DA1884"  />
+        <Button style={[styles.ButtonDesign]} title="Register"  color="black" />
+      {/* </View> */}
+
+    </View>
+    
+    </>
+    );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection:'column'
+  },
+  ButtonDesign: {
+    textDecorationColor:"black",
+    // justifyContent:"space-between"
+    // height:200, 
+    // width:500
+    // alignItems:"center",
+    // flexDirection:"row",
+    // justifyContent: 'center',
+    // height: 1500
+    // width:200
+  },
+  imagestyle:{
+    flex:1,
+    justifyContent:"center",
+    backgroundColor:"#DA1884",
+    width : 350, height: 300,
+    borderRadius:40,
+    // marginTop:10
+  },
+  textstyle:{
+    // flex:1,
+    // flexDirection:"column-reverse",
+    fontFamily: "notoserif",
+    textAlign:"center",
+    justifyContent:"center",
+    color: 'red',
+    backgroundColor: 'rgba(0,0,0,0)'  
+    
+  }
+});
