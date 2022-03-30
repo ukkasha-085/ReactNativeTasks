@@ -1,0 +1,55 @@
+import { StyleSheet, Text, View, TextInput, Pressable, Image } from 'react-native';
+
+export default function App() {
+  return (
+    <>
+    <View style={[styles.container, {flex:4,backgroundColor:"#FFFFE0"}]} >
+      <Text style={{fontWeight:"bold", fontSize:20, marginTop:20}}>Welcome Back</Text>
+      <Text style={{ 
+        textAlign: 'center', 
+    fontSize: 18,
+    width: 1000,
+    marginTop:20,
+    marginBottom:50 }}   >but the title provides its own additional styles. 
+        The title and body will stack on top of each other on account of the but the title provides its own additional styles. 
+        The title and body will stack on top of each other on account of the but the title provides its own additional styles. 
+        The title and body will stack on top of each other on account of the
+         literal newlines:</Text>
+    
+        <TextInput style={{textAlign:'center', height:60, width:700 ,borderRadius:15, margin:10, backgroundColor:"pink"}} placeholder="Useless Text" />
+        <TextInput style={{textAlign:'center', height:60, width:700 ,borderRadius:15, margin:10, backgroundColor:"pink"}}  placeholder="Useless Text22" />
+        <Text style={{alignSelf: 'flex-end', paddingRight:350, marginBottom:20, fontWeight:"bold"}} >Forget Password</Text>
+
+        <Pressable style={{backgroundColor:"#AA336A", width:700, height:50, borderRadius:15,  padding:10, borderColor:"black", borderWidth:3}}>
+          <Text style={{textAlign:"centre", paddingLeft:300,fontWeight:"bold", color:"white" }} >Sign in</Text>
+        </Pressable>
+
+        <Text style={{alignSelf: 'flex-centre', marginTop:10, fontSize:15}} >Or sign up with</Text>
+
+    </View>
+   
+    <View style={[styles.container, {flex:2,paddingTop:20, flexDirection:"row", backgroundColor:"#FFFFE0"}]} >
+        <Image style={{width:30, height:30 , borderRadius:30,margin:10}} source={require("E:/6th Semester/MAD/MAD-design/logins/assets/Google logo.png")} />
+        <Image style={{width:30, height:30  , borderRadius:30,margin:10}} source={require("E:/6th Semester/MAD/MAD-design/logins/assets/Facbook.png")} />
+        <Image style={{width:30, height:30  , borderRadius:10 ,margin:10}} source={require("E:/6th Semester/MAD/MAD-design/logins/assets/Group.png")} />
+
+
+    </View>
+    </>
+
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  // inputStyl:{
+  //   width:300,
+  //   marginLeft:400,
+  //   backgroundColor:'black'
+  // }
+});
